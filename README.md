@@ -33,7 +33,7 @@
     `python3 -m venv venv`
 
 - Installing Flask dependencies with:
-    `pip install flask`
+    `pip install flask[all]`
 
 
 <h2>Running the application</h2>
