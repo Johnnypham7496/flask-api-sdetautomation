@@ -1,4 +1,5 @@
 from flask import Response, Flask, jsonify
+from config import my_app
 
 
 app = Flask(__name__)
@@ -17,4 +18,4 @@ def health():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='localhost', port=8000)
+    my_app.run(debug=True, host='localhost', port=8000)
