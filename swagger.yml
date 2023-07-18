@@ -1,0 +1,35 @@
+openapi: '3.0.0'
+info:
+  description: 'This is the swagger spec for this Flask-API'
+  version: '1.0.0'
+  title: 'Flask-API'
+consumes: 
+  - 'application/json'
+produces:
+  - 'application/json'
+
+
+paths:
+  /:
+    get:
+
+      operationId: app.welcome
+      tags:
+      - swagger
+      summary: 'Retrives welcome message'
+      description: 'Retrives welcome message'
+      responses:
+        '200':
+          description: 'Welcome message'
+          
+  /health:
+    get:
+    
+      operationId: app.health
+      tags:
+      - swagger
+      summary: 'Retrieves health status of this application'
+      description: 'Preforms health check of this api'
+      responses:
+        '200':
+          description: 'Application functioning normally'
