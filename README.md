@@ -41,7 +41,7 @@
 
 - After you have preformed all the dependency installations from above, you can run the following command on your terminal to start this app
 
-    `flask run --debug`
+    `flask run --debug` or `python app.py`
 
 <h2>Project Database</h2>
 <hr>
