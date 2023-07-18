@@ -5,8 +5,8 @@ app = Flask(__name__)
 
 
 @app.get('/')
-def hello_world():
-    return {"message": "Hello World"}, 200
+def welcome():
+    return {"message": "Hello, welcome to Johnny's Flask-API"}, 200
 
 
 @app.get('/health')
