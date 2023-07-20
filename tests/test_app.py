@@ -21,13 +21,11 @@ def helper(json_info):
         return str(json.loads(first_row))
 
 
-def test_tc0001_welcome(client, helper):
+    # Tests that the 'message' value is 'Hello, welcome to Johnny's Flask-API'
+def test_tc0001_welcome(client):
     td_message = 'Hello, welcome to Johnny\'s Flask-API'
+
     response = client.get('/')
-    json_info = helper(response.response)
-    # validate response code
+    
     assert response.status_code == 200
-    # validate return message
-    if td_message not in json_info:
-        print('FAIL: Not able to find td ' + td_message)
-        assert False
+    assert response.get_json()['message'] == td_message
