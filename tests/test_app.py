@@ -29,3 +29,12 @@ def test_tc0001_welcome(client):
     
     assert response.status_code == 200
     assert response.get_json()['message'] == td_message
+
+
+def test_tc0002_health(client):
+    td_message = 'OK'
+
+    response = client.get('/health')
+    
+    assert response.status_code == 200
+    assert response.get_json()['status'] == td_message
