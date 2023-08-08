@@ -53,7 +53,7 @@
 
 - This project contains a swagger ui. [For more informationregarding swagger. Click here][https://swagger.io/]
 
-- To view this api's swaggeer ui, run this application the navigate to [http://localhost:5000.io/]
+- To view this api's swaggeer ui, run this application the navigate to [http://localhost:8000.ui/]
 
 <h2>Rest Api</h2>
 <hr>
