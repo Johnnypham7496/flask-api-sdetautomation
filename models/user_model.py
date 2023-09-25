@@ -29,4 +29,10 @@ class User(db.Model):
         news_user = User(username = _username, email = _email)
         db.session.add(news_user)
         db.session.commit()
-        
+
+    
+    @staticmethod
+    def update_user(_username, _email):
+        user_to_update = User.query.filter_by(username = _username).first()
+        user_to_update.email = _email
+        db.session.commit()
