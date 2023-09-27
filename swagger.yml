@@ -13,14 +13,14 @@ produces:
 paths:
   /createdb:
     get:
-    operationId: app.create_db
-    tags: 
-      - db-helper
-    summary: 'Creates a database per config settings'
-    description: 'Creates a database per config settings'
-    responses:
-      '200':
-      description: 'Creates a database per config settings' 
+      operationId: app.create_db
+      tags: 
+        - db-helper
+      summary: 'Creates a database per config settings'
+      description: 'Creates a database per config settings'
+      responses:
+        '200':
+          description: 'Creates a database per config settings' 
 
   /:
     get:
@@ -45,3 +45,14 @@ paths:
       responses:
         '200':
           description: 'Application functioning normally'
+
+  /users/v1:
+    get:
+      operationId: app.get_users
+      tags: 
+        - users
+      summary: 'Retrieves all user'
+      description: 'Displays all users'
+      responses:
+        '200':
+          description: 'See all users'
