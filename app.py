@@ -8,6 +8,7 @@ app = Flask(__name__)
 
 
 def create_db():
+    db.drop_all()
     db.create_all()
     User.addd_user_td()
     response_text = '{ "message": "Database created." }'
