@@ -32,7 +32,16 @@ class User(db.Model):
 
     
     @staticmethod
-    def update_user(_username, _email):
+    def update_email(_username, _email):
         user_to_update = User.query.filter_by(username = _username).first()
         user_to_update.email = _email
         db.session.commit()
+
+
+    @staticmethod
+    def delete_user(_username):
+        is_successful = User.query.filter_by(username= _username).delete()
+        db.session.commit()
+        return bool(is_successful)
+    
+    
