@@ -8,10 +8,11 @@ from db_config import db
 app = Flask(__name__)
 
 
+@app.get('/dbsetup')
 def create_db():
     db.drop_all()
     db.create_all()
-    User.addd_user_td()
+    User.add_user_td()
     response_text = '{ "message": "Database created." }'
     response = Response(response_text, 200, mimetype='application/json')
     return response

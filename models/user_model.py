@@ -45,7 +45,7 @@ class User(db.Model):
         return bool(is_successful)
     
     @staticmethod
-    def addd_user_td():
+    def add_user_td():
         User.add_user("darth", "darth.vader@gmail.com")
         User.add_user("superman", "super.man@gmail.com")
         User.add_user("thor", "thor@gmail.com")

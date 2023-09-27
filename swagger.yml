@@ -48,7 +48,7 @@ paths:
 
   /users/v1:
     get:
-      operationId: app.get_users
+      operationId: api.users.get_users
       tags: 
       - users
       summary: 'Retrieves all user'
@@ -59,7 +59,7 @@ paths:
 
   /user/v1/{username}:
     get:
-      operationId: app.get_by_username
+      operationId: api.users.get_by_username
       tags:
       - users 
       summary: 'Retrieves user by username'
