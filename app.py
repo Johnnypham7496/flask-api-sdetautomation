@@ -27,5 +27,11 @@ def health():
     return response
 
 
+@app.get('/users/v1')
+def get_users():
+    return_value = jsonify({'users': User.get_all_users()})
+    return return_value
+
+
 if __name__ == '__main__':
     my_app.run(debug=True, host='localhost', port=8000)
