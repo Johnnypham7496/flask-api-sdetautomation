@@ -11,6 +11,17 @@ produces:
 
 
 paths:
+  /createdb:
+    get:
+    operationId: app.create_db
+    tags: 
+      - db-helper
+    summary: 'Creates a database per config settings'
+    description: 'Creates a database per config settings'
+    responses:
+      '200':
+      description: 'Creates a database per config settings' 
+
   /:
     get:
 
