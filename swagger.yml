@@ -27,7 +27,7 @@ paths:
 
       operationId: app.welcome
       tags:
-      - swagger
+      - home
       summary: 'Retrives welcome message'
       description: 'Retrives welcome message'
       responses:
@@ -39,7 +39,7 @@ paths:
     
       operationId: app.health
       tags:
-      - swagger
+      - home
       summary: 'Retrieves health status of this application'
       description: 'Preforms health check of this api'
       responses:
