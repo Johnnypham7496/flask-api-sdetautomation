@@ -1,6 +1,6 @@
 from flask import Response, Flask, jsonify
 from config import my_app
-from models.user_model import *
+from models.user_model import User
 from app import app
 
 

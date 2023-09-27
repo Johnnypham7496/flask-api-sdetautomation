@@ -1,4 +1,4 @@
-from config import *
+from config import my_app
 from flask_sqlalchemy import SQLAlchemy
 
 
