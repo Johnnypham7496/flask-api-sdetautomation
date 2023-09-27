@@ -50,9 +50,36 @@ paths:
     get:
       operationId: app.get_users
       tags: 
-        - users
+      - users
       summary: 'Retrieves all user'
       description: 'Displays all users'
       responses:
         '200':
           description: 'See all users'
+
+  /user/v1/{username}:
+    get:
+      operationId: app.get_by_username
+      tags:
+      - users 
+      summary: 'Retrieves user by username'
+      description: 'Displays user by username'
+      parameters:
+        - name: username
+          in: path
+          description: 'Retrieves username data'
+          type: string 
+          required: true
+      responses:
+        '200':
+          description: 'Successfully displayed user info'
+          schema:
+            type: array
+            items:
+              properties:
+                username:
+                  type: string
+                email: 
+                  type: string 
+        '404':
+          description: 'User not found'
