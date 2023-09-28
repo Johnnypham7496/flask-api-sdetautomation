@@ -83,3 +83,33 @@ paths:
                   type: string 
         '404':
           description: 'User not found'
+    put:
+      operationId: api.users.update_email
+      tags:
+      - users 
+      summary: 'Updates user email'
+      description: 'Updates a single user email'
+      parameters:
+        - name: username
+          in: path
+          description: 'Username to update email'
+          type: string 
+          required: true
+        - name: user
+          in: body
+          description: 'field to update'
+          required: true
+          schema: 
+            type: object
+            properties: 
+              username:
+                type: string
+              email:
+                type: string 
+      responses:
+        '204':
+          description: 'Successfully updated user email'
+        '400':
+          description: 'Invalid request'
+        '404':
+          description: 'Username not found'
