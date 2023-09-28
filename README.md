@@ -22,13 +22,9 @@
 <h2>Installing Project Dependencies</h2>
 <hr>
 
-[This project uses Virtualenv for virtual environment management.](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/s)
+[This project uses venv for virtual environment management.](https://docs.python.org/3/tutorial/venv.html)
 
-- Enter the following code into the command line to install Virtualenv:
-
-    `pip install --user virtualenv`
-
-- Then create a virtual environment with:
+- Create a virtual environment with:
 
     `python3 -m venv venv`
 
@@ -51,7 +47,7 @@
 <h2>Swagger</h2>
 <hr>
 
-- This project contains a swagger ui. [For more informationregarding swagger. Click here][https://swagger.io/]
+- This project contains a swagger ui. [For more informationregarding swagger. Click here](https://swagger.io/)
 
 - To view this api's swaggeer ui, run this application the navigate to [http://localhost:8000/ui/]
 
@@ -60,17 +56,17 @@
 
 <h3>Users API</h3>
 
-- GET - getAll:localhost:5000/users/v1
-- GET - getByUsername: http://localhost:5000/users/darth
-- PUT - updateUserEmail: http://localhost:5000/users/darth + include json bosy with new email
-- DELETE - deleteUsername: http://localhost:5000/users/darth
+- GET - getAll:localhost:8000/users/v1
+- GET - getByUsername: http://localhost:8000/users/darth
+- PUT - updateUserEmail: http://localhost:8000/users/darth + include json bosy with new email
+- DELETE - deleteUsername: http://localhost:8000/users/darth
 
 <h3>Locations API</h3>
 
-- GET - getByUsername: http://localhost:5000/locations/v1
-- GET - getByUsername: http://localhost:5000/locations/v1/ca
-- PUT - updateUserEmail: http://localhost:5000/locations/v1/ca + include json bosy with new capital
-- DELETE - deleteUsername: http://localhost:5000/locations/v1/ca
+- GET - getByUsername: http://localhost:8000/locations/v1
+- GET - getByUsername: http://localhost:8000/locations/v1/ca
+- PUT - updateUserEmail: http://localhost:8000/locations/v1/ca + include json bosy with new capital
+- DELETE - deleteUsername: http://localhost:8000/locations/v1/ca
 
 <h2>TDD - Integration Tests</h2>
 <hr>
@@ -82,7 +78,7 @@
 <h2>Flask Project</h2>
 <hr>
 
-- This project is a Flask project. (For more information)[https://flask.pocoo.org]
+- This project is a Flask project. [For more information. Click here](https://flask.palletsprojects.com/en/2.3.x/)
 
 <h2>Continuous Integration(CI)</h2>
 <hr>
