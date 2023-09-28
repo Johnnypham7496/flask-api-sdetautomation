@@ -11,12 +11,23 @@ produces:
 
 
 paths:
+  /createdb:
+    get:
+      operationId: app.create_db
+      tags: 
+        - db-helper
+      summary: 'Creates a database per config settings'
+      description: 'Creates a database per config settings'
+      responses:
+        '200':
+          description: 'Creates a database per config settings' 
+
   /:
     get:
 
       operationId: app.welcome
       tags:
-      - swagger
+      - home
       summary: 'Retrives welcome message'
       description: 'Retrives welcome message'
       responses:
@@ -28,9 +39,47 @@ paths:
     
       operationId: app.health
       tags:
-      - swagger
+      - home
       summary: 'Retrieves health status of this application'
       description: 'Preforms health check of this api'
       responses:
         '200':
           description: 'Application functioning normally'
+
+  /users/v1:
+    get:
+      operationId: api.users.get_users
+      tags: 
+      - users
+      summary: 'Retrieves all user'
+      description: 'Displays all users'
+      responses:
+        '200':
+          description: 'See all users'
+
+  /user/v1/{username}:
+    get:
+      operationId: api.users.get_by_username
+      tags:
+      - users 
+      summary: 'Retrieves user by username'
+      description: 'Displays user by username'
+      parameters:
+        - name: username
+          in: path
+          description: 'Retrieves username data'
+          type: string 
+          required: true
+      responses:
+        '200':
+          description: 'Successfully displayed user info'
+          schema:
+            type: array
+            items:
+              properties:
+                username:
+                  type: string
+                email: 
+                  type: string 
+        '404':
+          description: 'User not found'
