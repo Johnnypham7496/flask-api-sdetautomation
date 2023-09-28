@@ -56,6 +56,30 @@ paths:
       responses:
         '200':
           description: 'See all users'
+    post:
+      operationId: api.users.add_user
+      tags: 
+      - users
+      summary: 'Creates a user'
+      description: 'Creates a single user record'
+      parameters:
+        - name: user
+          in: body
+          description: 'Username to create'
+          required: true
+          schema:
+            type: object
+            properties:
+              username: 
+                type: string
+              email:
+                type: string 
+      responses:
+        '200':
+          description: 'Successfully created user'
+        '400':
+          description: 'Invalid request'
+          
 
   /user/v1/{username}:
     get:
