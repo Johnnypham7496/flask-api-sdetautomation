@@ -31,7 +31,7 @@ def add_user():
 
 
 @app.put('/users/v1/{username}')
-def update_user(username):
+def update_email(username):
     request_data = request.get_json()
     if validate_put_request_object(request_data):
         # username is coming from url param, and email from json request body
