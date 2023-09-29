@@ -1,7 +1,7 @@
 from flask import Response, Flask, jsonify, request, json
 from config import my_app
 from models.user_model import User
-from messages.error_messages import invalid_post_msg_users
+from messages.error_messages import invalid_post_msg_users, invalid_put_error_msg_users
 from validations.validation import validate_user_object, validate_put_request_object
 from app import app
 
@@ -28,3 +28,15 @@ def add_user():
     else:
         response = Response(json.dumps(invalid_post_msg_users), 400, mimetype='application/json') 
     return response 
+
+
+@app.put('/users/v1/{username}')
+def update_user(username):
+    request_data = request.get_json()
+    if validate_put_request_object(request_data):
+        # username is coming from url param, and email from json request body
+        User.update_email(request_data['email'])
+        response = Response('', 204, mimetype='application/json')
+    else: 
+        response = Response(json.dumps(invalid_put_error_msg_users), 400, mimetype='application/json')
+    return response
