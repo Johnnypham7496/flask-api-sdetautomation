@@ -1,7 +1,7 @@
 from flask import Response, Flask, jsonify, request, json
 from config import my_app
 from models.user_model import User
-from messages.error_messages import invalid_post_msg_users, invalid_put_error_msg_users
+from messages.error_messages import invalid_post_msg_users, invalid_put_error_msg_users, invalid_delete_error_msg_users
 from validations.validation import validate_user_object, validate_put_request_object
 from app import app
 
@@ -39,4 +39,13 @@ def update_user(username):
         response = Response('', 204, mimetype='application/json')
     else: 
         response = Response(json.dumps(invalid_put_error_msg_users), 400, mimetype='application/json')
+    return response
+
+
+@app.delete('/users/v1/{username}')
+def delete_user(username):
+    if User.delete_user(username):
+        response = Response('', 204)
+    else:
+        response = Response(json.dumps(invalid_delete_error_msg_users), 404, mimetype='application/json')
     return response
