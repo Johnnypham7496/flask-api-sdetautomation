@@ -33,6 +33,3 @@ def test_0001_get(client):
     response = client.get(f'/users/v1/{td_username}')
 
     assert response.status_code == 200
-
-    # json_info = helper(response.response)
-
