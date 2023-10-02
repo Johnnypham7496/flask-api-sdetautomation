@@ -56,6 +56,30 @@ paths:
       responses:
         '200':
           description: 'See all users'
+    post:
+      operationId: api.users.add_user
+      tags: 
+      - users
+      summary: 'Creates a user'
+      description: 'Creates a single user record'
+      parameters:
+        - name: user
+          in: body
+          description: 'Username to create'
+          required: true
+          schema:
+            type: object
+            properties:
+              username: 
+                type: string
+              email:
+                type: string 
+      responses:
+        '200':
+          description: 'Successfully created user'
+        '400':
+          description: 'Invalid request'
+
 
   /user/v1/{username}:
     get:
@@ -83,3 +107,48 @@ paths:
                   type: string 
         '404':
           description: 'User not found'
+    put:
+      operationId: api.users.update_email
+      tags:
+      - users 
+      summary: 'Updates user email'
+      description: 'Updates a single user email'
+      parameters:
+        - name: username
+          in: path
+          description: 'Username to update email'
+          type: string 
+          required: true
+        - name: user
+          in: body
+          description: 'field to update'
+          required: true
+          schema: 
+            type: object
+            properties: 
+              email:
+                type: string 
+      responses:
+        '204':
+          description: 'Successfully updated user email'
+        '400':
+          description: 'Invalid request'
+        '404':
+          description: 'Username not found'
+    delete:
+      operationId: api.users.delete_user
+      tags:
+      - users
+      summary: 'Deletes user data'
+      description: 'Deletes user data by username'
+      parameters:
+        - name: username
+          in: path
+          description: 'Delete username'
+          type: string
+          required: true
+      responses:
+        '204':
+          description: 'Successfully delete user'
+        '404':
+          description: 'Username not found'
