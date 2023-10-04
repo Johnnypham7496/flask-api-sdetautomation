@@ -20,7 +20,7 @@ def client():
         yield c
 
 
-@pytest.fixture(scope='module')
+# @pytest.fixture(scope='module')
 def helper(json_info):
     for info in json_info:
         first_row = info.decode("utf-8")
@@ -31,5 +31,7 @@ def test_0001_get(client):
     td_username = 'thor'
 
     response = client.get(f'/users/v1/{td_username}')
+    
 
+    assert response.headers['Content-Type'] == 'application/json'
     assert response.status_code == 200

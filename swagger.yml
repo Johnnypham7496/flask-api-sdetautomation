@@ -81,7 +81,7 @@ paths:
           description: 'Invalid request'
 
 
-  /user/v1/{username}:
+  /users/v1/{username}:
     get:
       operationId: api.users.get_by_username
       tags:
