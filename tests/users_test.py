@@ -28,6 +28,21 @@ def helper(json_info):
 
 
 def test_tc0001_get(client):
+    td_username = 'darth'
+
+    response = client.get('/users/v1')
+    json_info = helper(response.response)
+    
+
+    assert response.headers['Content-Type'] == 'application/json'
+    assert response.status_code == 200
+    
+    if td_username not in json_info:
+        print(f'FAIL: Not able to find td{td_username}')
+        assert False
+
+
+def test_tc0002_get_by_username(client):
     td_username = 'thor'
 
     response = client.get(f'/users/v1/{td_username}')
