@@ -20,16 +20,91 @@ def client():
         yield c
 
 
-@pytest.fixture(scope='module')
+# @pytest.fixture(scope='module')
 def helper(json_info):
     for info in json_info:
         first_row = info.decode("utf-8")
         return str(json.loads(first_row))
 
 
-def test_0001_get(client):
+def test_tc0001_get(client):
+    td_username = 'darth'
+
+    response = client.get('/users/v1')
+    json_info = helper(response.response)
+    
+
+    assert response.headers['Content-Type'] == 'application/json'
+    assert response.status_code == 200
+    
+    if td_username not in json_info:
+        print(f'FAIL: Not able to find td{td_username}')
+        assert False
+
+
+def test_tc0002_get_by_username(client):
     td_username = 'thor'
 
     response = client.get(f'/users/v1/{td_username}')
+    json_info = helper(response.response)
+    
+
+    assert response.headers['Content-Type'] == 'application/json'
+    assert response.status_code == 200
+    
+    if td_username not in json_info:
+        print(f'FAIL: Not able to find td{td_username}')
+        assert False
+
+
+def test_tc0003_post(client):
+    td_username = 'batman'
+    td_email = 'batman@gmail.com'
+
+    response = client.post('/users/v1', data = json.dumps(dict(
+        username= td_username,
+        email= td_email
+    )), mimetype='application/json')
+    json_info = helper(response.response)
+
+    assert response.status_code == 201
+
+    if td_username not in json_info and td_email not in json_info:
+        print(f'FAIL: Not able to find td{td_username}')
+        assert False
+
+
+def test_tc0004_users_put(client):
+    td_username = 'darth'
+    td_email = 'luke@gmail.com'
+
+    response = client.put(f'/users/v1/{td_username}', data= json.dumps(dict(
+        email= td_email
+    )), mimetype='application/json')
+
+    assert response.status_code == 204
+
+    response = client.get(f'/users/v1/{td_username}')
+    json_info = helper(response.response)
 
     assert response.status_code == 200
+
+    if td_email not in json_info:
+        print(f'FAIL: Not able to find td{td_email}')
+        assert False
+
+
+def test_tc0005_delete(client):
+    td_username = 'delete'
+    td_email = 'test@example.com'
+
+    response = client.post('/users/v1', data = json.dumps(dict(
+        username= td_username,
+        email= td_email
+    )), mimetype='application/json')
+
+    assert response.status_code == 201
+
+    delete_response = client.delete(f'/users/v1/{td_username}')
+
+    assert delete_response.status_code == 204
