@@ -4,5 +4,5 @@ user_schema = {
         "username": {"type": "string"},
         "email": {"type": "string"}
     },
-    "required": {"username", "email"}
+    "required": ["username", "email"]
 }
