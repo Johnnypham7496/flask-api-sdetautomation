@@ -72,3 +72,23 @@ def test_tc0003_post(client):
     if td_username not in json_info and td_email not in json_info:
         print(f'FAIL: Not able to find td{td_username}')
         assert False
+
+
+def test_0004_users_put(client):
+    td_username = 'darth'
+    td_email = 'luke@gmail.com'
+
+    response = client.put(f'/users/v1/{td_username}', data= json.dumps(dict(
+        email= td_email
+    )), mimetype='application/json')
+
+    assert response.status_code == 204
+
+    response = client.get(f'/users/v1/{td_username}')
+    json_info = helper(response.response)
+
+    assert response.status_code == 200
+
+    if td_email not in json_info:
+        print(f'FAIL: Not able to find td{td_email}')
+        assert False
