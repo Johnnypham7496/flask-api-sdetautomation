@@ -26,7 +26,7 @@ def add_user():
 
     try:
         jsonschema.validate(request_data, user_schema)
-        User.add_user(request_data, user_schema)
+        User.add_user(request_data['username'], request_data['email'])
         response = Response(json.dumps(request_data), 201, mimetype='application/json')
         response.headers['Location'] = '/users/vv1/' + str(request_data['username'])
     except jsonschema.exceptions.ValidationError as exc:
