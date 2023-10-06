@@ -1,7 +1,7 @@
 from flask import Response, jsonify, request, json
 from config import my_app
 from models.user_model import User
-from messages.error_messages import invalid_post_msg_users, invalid_put_error_msg_users, invalid_delete_error_msg_users
+from messages.error_messages import invalid_post_msg_users, invalid_put_error_msg_users, invalid_delete_error_msg_users, error_message_helper
 from validations.validation import validate_user_object, validate_put_request_object
 from app import app
 from schemas.user_schema import user_schema
@@ -24,13 +24,13 @@ def get_by_username(username):
 def add_user():
     request_data = request.get_json()
 
-    jsonschema.validate(request_data, user_schema)
-    # if validate_user_object(request_data):
-    #     User.add_user(request_data['username'], request_data['email'])
-    #     response = Response(json.dumps(request_data), 201, mimetype='application/json')
-    #     response.headers['Location'] = '/users/v1' + str(request_data['username'])
-    # else:
-    #     response = Response(json.dumps(invalid_post_msg_users), 400, mimetype='application/json') 
+    try:
+        jsonschema.validate(request_data, user_schema)
+        User.add_user(request_data, user_schema)
+        response = Response(json.dumps(request_data), 201, mimetype='application/json')
+        response.headers['Location'] = '/users/vv1/' + str(request_data['username'])
+    except jsonschema.exceptions.ValidationError as exc:
+        response = Response(error_message_helper(exc.message), 400, mimetype='application/json')
     return 'ok' 
 
 
