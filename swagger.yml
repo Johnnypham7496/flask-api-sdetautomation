@@ -75,7 +75,7 @@ paths:
               email:
                 type: string 
       responses:
-        '200':
+        '201':
           description: 'Successfully created user'
         '400':
           description: 'Invalid request'
