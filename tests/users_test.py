@@ -108,3 +108,22 @@ def test_tc0005_delete(client):
     delete_response = client.delete(f'/users/v1/{td_username}')
 
     assert delete_response.status_code == 204
+
+
+def test_tc0006_bad_post(client):
+    td_username = 'et'
+    td_email = 'et@gmail.com'
+    td_error_message = '{\'error\': "\'username\' is a required property."}'
+
+    response = client.post('/users/v1', data= json.dumps(dict(
+        user= td_username,
+        email= td_email
+    )), mimetype='application/json')
+
+    assert response.status_code == 400
+
+    json_info = str(helper(response.response))
+
+    if td_error_message not in json_info:
+        print(f'FAIL: Error message not found {td_error_message}')
+        assert False
