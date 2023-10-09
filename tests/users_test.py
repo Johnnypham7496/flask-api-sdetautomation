@@ -73,6 +73,9 @@ def test_tc0003_post(client):
         print(f'FAIL: Not able to find td{td_username}')
         assert False
 
+    # this codes deletes the data from the test.db after creating to ensure our post fucntion always passes wihtout committed the changes to the test.db
+    client.delete(f'/users/v1/{td_username}')
+
 
 def test_tc0004_users_put(client):
     td_username = 'darth'
@@ -123,6 +126,24 @@ def test_tc0006_bad_post(client):
     assert response.status_code == 400
 
     json_info = str(helper(response.response))
+
+    if td_error_message not in json_info:
+        print(f'FAIL: Error message not found {td_error_message}')
+        assert False
+
+
+def test_tc0007_bad_put(client):
+    td_username = 'darth'
+    td_email = 'luke@gmail.com'
+    td_error_message = '{\'error\': "\'email\' is a required property."}'
+
+    response = client.put(f'/users/v1/{td_username}', data= json.dumps(dict(
+        mail= td_email
+    )), mimetype='application/json')
+
+    assert response.status_code == 400
+
+    json_info = helper(response.response)
 
     if td_error_message not in json_info:
         print(f'FAIL: Error message not found {td_error_message}')
