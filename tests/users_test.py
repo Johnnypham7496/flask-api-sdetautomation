@@ -14,6 +14,16 @@ db.init_app(flask_app.app)
 flask_app.add_api('../swagger.yml')
 
 
+@pytest.fixture(scope='function')
+def db_session():
+  """Creates a new database session and rolls it back at the end of the test."""
+  db.session.begin()
+  try:
+    yield db.session
+  finally:
+    db.session.rollback()
+
+
 @pytest.fixture(scope='module')
 def client():
     with flask_app.app.test_client() as c:

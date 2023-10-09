@@ -30,7 +30,7 @@ def add_user():
         response.headers['Location'] = '/users/vv1/' + str(request_data['username'])
     except jsonschema.exceptions.ValidationError as exc:
         response = Response(error_message_helper(exc.message), 400, mimetype='application/json')
-    return 'ok' 
+    return response
 
 
 @app.put('/users/v1/{username}')
