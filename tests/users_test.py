@@ -148,3 +148,17 @@ def test_tc0007_bad_put(client):
     if td_error_message not in json_info:
         print(f'FAIL: Error message not found {td_error_message}')
         assert False
+
+
+def test_tc0008_bad_delete(client):
+    td_username = 'cody'
+    td_error_message = '{\"error\": \'User not found, unable to delete.\'}'
+
+    response = client.delete(f'/users/v1/{td_username}')
+
+    assert response.status_code == 404
+
+    json_info = helper(response.response)
+    if td_error_message not in json_info:
+        print(f'FAIL: Error message not found {td_error_message}')
+        assert False
