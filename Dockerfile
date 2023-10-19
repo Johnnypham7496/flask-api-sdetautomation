@@ -12,7 +12,7 @@ WORKDIR /flask_api_sdetautomation
 
 # this is the command on how the code will be executed. Typically will be written for example "/flask_api_sdetautomation/app.py"
 # but the directory is specified in the "WORKDIR" 
-CMD [ "executable" ]
+CMD [ "python", "app.py" ]
 
 EXPOSE 3000
 
