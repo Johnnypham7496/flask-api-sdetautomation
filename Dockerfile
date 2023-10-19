@@ -14,7 +14,7 @@ WORKDIR /flask_api_sdetautomation
 # but the directory is specified in the "WORKDIR" 
 CMD [ "executable" ]
 
-EXPOSE 5000
+EXPOSE 3000
 
 RUN mkdir /flask_api_sdetautomation && \
     apk upgrade --update && \
