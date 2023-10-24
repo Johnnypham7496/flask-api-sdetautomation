@@ -15,7 +15,7 @@
 
 - This project is made for anyone who is looking for an example of how to create a rest endpoint using Python and Flask
 
-- This serice calls a local sqlite database. Please see database directory for more details
+- This service calls a local sqlite database. Please see database directory for more details
 
 - This project was written using VS Code
 
@@ -47,7 +47,7 @@
 <h2>Swagger</h2>
 
 
-- This project contains a swagger ui. [For more informationregarding swagger. Click here](https://swagger.io/)
+- This project contains a swagger ui. [For more information regarding swagger. Click here](https://swagger.io/)
 
 - To view this api's swaggeer ui, run this application the navigate to [http://localhost:8000/ui/]
 
@@ -82,3 +82,27 @@
 
 
 - Feel free to fork this repo, add to it, and create a pull request if you like to contribute
+
+## Docker 
+- This application uses Docker. Pease see Dockerfile for image setup. Steps to create a docker image and how to run the app in a container list below. (must have docker installed)
+
+- Create a Docker image: `docker build -t flask-api-sdetautomation .`
+
+- Run a Docker container: `docker run -it p 5000:5000 flask-api-sdetautomation`
+
+__***Once the app has started, view the swagger ui by navigating to [https://localhost:5000/ui/]***__
+
+- View Docker images: `docker images`
+
+- View Docker container: `docker ps` 
+    - (This command can also be used to fine the container id for stopping or removing containers)
+
+- Stop Docker container: `docker stop <the-container-id>`
+
+- Remove a Docker container: `docker rm <the-container-id>`
+
+- Remove a Docker image: `docker rmi <repository-name>:<tag>`
+
+[Click here for more information regarding Docker](https://docs.docker.com/)
+
+__*Note this flask app by default runs as a development server, not meant for production. Docker and gunicorn is used to productionize this app. This docker container runs as a production WSGI server, with 4 workers via [gunicorn](https://gunicorn.org/)*__

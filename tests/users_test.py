@@ -73,7 +73,7 @@ def test_tc0003_post(client):
         print(f'FAIL: Not able to find td{td_username}')
         assert False
 
-    # this codes deletes the data from the test.db after creating to ensure our post fucntion always passes wihtout committed the changes to the test.db
+    # this codes deletes the data from the test.db after creating to ensure our post function always passes without committed the changes to the test.db
     client.delete(f'/users/v1/{td_username}')
 
 
@@ -145,6 +145,20 @@ def test_tc0007_bad_put(client):
 
     json_info = helper(response.response)
 
+    if td_error_message not in json_info:
+        print(f'FAIL: Error message not found {td_error_message}')
+        assert False
+
+
+def test_tc0008_bad_delete(client):
+    td_username = 'cody'
+    td_error_message = "{'error': 'User not found'}"
+
+    response = client.delete(f'/users/v1/{td_username}')
+
+    assert response.status_code == 404
+
+    json_info = helper(response.response)
     if td_error_message not in json_info:
         print(f'FAIL: Error message not found {td_error_message}')
         assert False
