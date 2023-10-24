@@ -16,9 +16,9 @@ CMD [ "python", "app.py" ]
 
 EXPOSE 3000
 
-RUN mkdir /flask_api_sdetautomation && \
-    apk upgrade --update && \
-    apk add --no-cache postgresql-dev gcc python3-dev musl-dev && \
-    python -3 venv venv/
+# RUN mkdir /flask_api_sdetautomation && \
+#     apk upgrade --update && \
+#     apk add --no-cache postgresql-dev gcc python3-dev musl-dev && \
+#     python -3 venv venv/
 
-RUN . venv/Scripts/Activate %% pip install -r requirements.txt
+# RUN . venv/Scripts/Activate %% pip install -r requirements.txt
