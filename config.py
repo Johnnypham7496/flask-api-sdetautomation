@@ -3,7 +3,7 @@ import connexion
 
 # create an application instance
 
-my_app = connexion.App(__name__, specification_dir='./')
+my_app = connexion.App(__name__, specification_dir='./swagger')
 
 SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(my_app.root_path, 'database/database.db')
 
