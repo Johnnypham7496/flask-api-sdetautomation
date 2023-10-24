@@ -104,3 +104,5 @@ __***Once the app has started, view the swagger ui by navigating to [https://loc
 - Remove a Docker image: `docker rmi <repository-name>:<tag>`
 
 [Click here for more information regarding Docker](https://docs.docker.com/)
+
+__*Note this flask app by default runs as a development server, not meant for production. Docker and gunicorn is used to productionize this app. This docker container runs as a production WSGI server, with 4 workers via [gunicorn](https://gunicorn.org/)*__

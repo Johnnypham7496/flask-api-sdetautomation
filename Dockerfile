@@ -2,6 +2,10 @@
 FROM python:3.10.11
 
 
+EXPOSE 3000
+
+ENTRYPOINT [ "gunicorn" ]
+
 # "." will copy all the files in the current directory and copy it into a new directory call "/flask_api_sdetautomation" within the image
 # the directory name can be changed
 COPY . /flask_api_sdetautomation
@@ -14,7 +18,6 @@ WORKDIR /flask_api_sdetautomation
 # but the directory is specified in the "WORKDIR" 
 CMD [ "python", "app.py" ]
 
-EXPOSE 3000
 
 # RUN mkdir /flask_api_sdetautomation && \
 #     apk upgrade --update && \
